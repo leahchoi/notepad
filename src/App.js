@@ -42,7 +42,7 @@ const App = () => {
     headers: {
       Accept: "application/vnd.github.v3+json",
       "Content-Type": "application/json",
-      Authorization: `token 94afceec6c5d6615339fde51306014bdece9437f`,
+      Authorization: `token 83797ca72179c271a0eab82f9278acf085a648a8`,
     },
     body: js,
   };
