@@ -1,30 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import NotepadList from "./NotepadList.jsx";
 import Notepad from "./Notepad.jsx";
 import "./App.css";
 
 const App = () => {
-  useEffect(() => {
-    try {
-      fetch(`https://api.github.com/gists`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `token 83797ca72179c271a0eab82f9278acf085a648a8`,
-        },
-      }).then((res) => {
-        console.log(res);
-      });
-    } catch (e) {
-      console.log("error:", e);
-    }
-  }, []);
-
-  const json = JSON.stringify({
-    "note 1": {
-      content: "sample",
-    },
-  });
-
   const js = JSON.stringify({
     description: "description",
     public: true,
@@ -54,6 +34,7 @@ const App = () => {
       });
     } catch (e) {}
   };
+
   return (
     <div className="App">
       <h2
@@ -64,7 +45,12 @@ const App = () => {
       >
         Notepad Application
       </h2>
-      hello: <Notepad />
+      <BrowserRouter>
+        <Switch>
+          <Route path={`/`} exact component={NotepadList} />
+          <Route path={`/notepad/:id`} exact component={Notepad} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };
